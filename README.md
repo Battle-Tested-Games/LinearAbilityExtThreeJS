@@ -2,6 +2,8 @@
 
 A skillshot VFX sandbox built with **Three.js**, **Vite** and hand-written **GLSL**.
 
+![Pyre Crown erupting in the sandbox](docs/screenshots/hero.jpg)
+
 Seven abilities and five ways to aim them. Press the key to arm, the appropriate targeting
 indicator appears, swing it with the mouse, click to fire. One ability is a **line cast** (the
 arrow), three are **far casts** (a thick boundary that follows the cursor and answers the only
@@ -18,27 +20,37 @@ the column of hot air over the crater, and is then *consumed*: eaten down from t
 floor and left as ash. The middle of the footprint is held open on purpose, because the read of the
 ability is a wall you are looking *into*, and filling the disc stops it being a ring.
 
+![Pyre Crown — a ring of burning blades standing over its own crater](docs/screenshots/pyre-crown.jpg)
+
 **E — Kraken Crown.** A slick of black water runs out to the aimed point, the flagstones inside the
 circle give way, and a ring of cephalopod arms hauls itself out of the rift — uncoiling as it comes,
 rearing back over the floor — and then *hammers the middle of the footprint* over and over. Each
 landing throws stone, spray and ink, the slams arrive as rolling thunder rather than in unison, and
 the cast ends with one synchronised slam and the arms dragging themselves back into the hole.
 
+![Kraken Crown — a ring of arms rearing out of the rift](docs/screenshots/kraken-crown.jpg)
+
 **R — Electrical Sphere.** A line of current is whipped out across the floor; where it lands the
 ground splits, a containment platform blooms out, and a dark polished sphere rises out of the middle
 and hovers there — mirroring the room, ringed in Fresnel light, electricity crawling flat across its
 skin and arcs tearing off it — until it collapses inward and vanishes.
+
+![Electrical Sphere — arcs tearing off a hovering sphere](docs/screenshots/electrical-sphere.jpg)
 
 **F — Earthen Spire.** The only line cast. A crust of stone plates is laid down along the aimed line
 behind a travelling front, a fracture wave trails the head and breaks the crust open, boulders are
 thrown up through the cracks, and — at the end of the line — a stone tower climbs out of the floor
 with a ring of boulders shouldered up around its plinth.
 
+![Earthen Spire — the tower climbing out at the end of the line](docs/screenshots/earthen-spire.jpg)
+
 **V — Verdant Gate.** The first gate cast. A seam of green races along the aimed line to the site,
 quarried blocks break out of the floor outside the footprint and swing up into their slots, both
 jambs climbing together, the outer courses lagging the inner ones, the keystone seating last with
 the only shake worth feeling — and then the portal floods the opening and *stays lit* until another
 gate is raised, at which point the standing one is asked to come apart, keystone first.
+
+![Verdant Gate — the keystone seated and the portal lit](docs/screenshots/verdant-gate.jpg)
 
 **X — Tidewrought Ring.** The first ring cast. A tide of light runs out along the aimed line, the
 ring is then *forged lying down* — segments swing in out of a wide orbit in the ground plane,
@@ -47,15 +59,21 @@ on the crown, with a band of runes lighting behind them one mark at a time — t
 stands up, hinging off the floor about its own lateral axis and settling a few degrees past
 vertical, and the horizon irises open from the middle out, slams into the rim, and stays lit.
 
+![Tidewrought Ring — the hoop stood up and the horizon open](docs/screenshots/tidewrought-ring.jpg)
+
 **Z — Fire Portal.** The first scribe cast. A black disc is *struck* into existence — a spark is lit
 at the foot of the circle and runs all the way round it, and the contour it traces is the way
 through, drawn from the middle out. The ring behind the disc is a circle standing in the air that
 throws stretched sparks off itself on a tangent, all the way round, every frame. The way through is
 the only portal in the sandbox that *takes* the opening away rather than putting light in it.
 
+![Fire Portal — a black disc struck into the air, sparks thrown off the ring](docs/screenshots/fire-portal.jpg)
+
 Outside the arm-and-cast loop sit three self-buffs: **B** Electric Boost, **M** Magic Boost, **K**
 Fire Boost. None of them is selected, none of them is aimed, and any of them, all of them, or none
 can be running at once.
+
+![Electric, Magic and Fire Boost all running at once](docs/screenshots/self-buffs.jpg)
 
 Everything you can see is generated. There are no sprite sheets and no meshes on disk except the
 character: the blades are procedural geometry, the arms are procedural tubes bent entirely in a
@@ -253,6 +271,14 @@ clamps the distance into `[minRange, range]`, tracks a 0..1 reveal envelope, and
 
 It runs on **real** time rather than the scaled simulation delta, so the indicator keeps animating
 while the sandbox is paused.
+
+![The far-cast circle, armed and following the cursor](docs/screenshots/aim-far-cast.jpg)
+
+*A far cast armed: the boundary follows the cursor and shows the footprint before you commit.*
+
+![The line-cast arrow, swung out from the character](docs/screenshots/aim-line-cast.jpg)
+
+*The line cast: one arrow, drawn as a signed-distance field, swung with the mouse.*
 
 There are five indicators and one controller. Which one is drawn comes from
 `ELEMENT_META[element].cast` — `CastShape.LINE`, `CastShape.ZONE`, `CastShape.GATE`,
@@ -801,6 +827,11 @@ Gate template, Ring template, Scribe template, Pyre Crown, Kraken Crown, Electri
 Earthen Spire, Verdant Gate, Tidewrought Ring, Fire Portal, Electric Boost, Magic Boost, Fire
 Boost, Environment, Post processing, Camera, Character. Every folder starts collapsed — there
 are enough controls here that one open section pushes the rest off the screen.
+
+![The VFX editor open beside a frozen Pyre Crown](docs/screenshots/vfx-editor.jpg)
+
+*Paused mid-eruption with **P**, the Pyre Crown's silhouette sliders open. Every one of them still
+applies while the frame is frozen.*
 
 - **Global** multipliers scale everything at once (speed, glow, noise, particles, lights, impact
   intensity, camera shake, time scale…).
