@@ -2,52 +2,71 @@
 
 A skillshot VFX sandbox built with **Three.js**, **Vite** and hand-written **GLSL**.
 
-Five abilities and two ways to aim them. Four are **line casts**: press the key to arm, a
-League-of-Legends style arrow appears on the ground and swings with the mouse, click to fire. The
-fifth is a **far cast**: the arrow is replaced by a circle with a deliberately thick boundary that
-follows the cursor and answers the only question a ground-targeted AoE has to answer before you
-commit — how much space is this going to take.
+Seven abilities and five ways to aim them. Press the key to arm, the appropriate targeting
+indicator appears, swing it with the mouse, click to fire. One ability is a **line cast** (the
+arrow), three are **far casts** (a thick boundary that follows the cursor and answers the only
+question a ground-targeted AoE has to answer before you commit — how much space this is going to
+take), one is a **gate cast** (the only one that builds a structure standing on the floor), one
+is a **ring cast** (a structure that is forged lying down and then hinged up to stand), and one is
+a **scribe cast** (a hole struck into the air at a chosen size, with no footprint on the ground
+at all).
 
-**Q — Frost Lance.** A fracture front races out along the line while a field of ice crystals
-tears up out of the floor behind it — small and dense at your feet, opening into a wall of blades
-at the far end, with a cluster thrown up around the impact point.
+**Q — Pyre Crown.** A line of fire races out across the floor, the ground inside the circle splits
+and goes molten, and a ring of burning blades tears up out of it — leaning outward, fanned so they
+cross, of wildly uneven height — which stands, burns, throws embers up through its own middle on
+the column of hot air over the crater, and is then *consumed*: eaten down from the points to the
+floor and left as ash. The middle of the footprint is held open on purpose, because the read of the
+ability is a wall you are looking *into*, and filling the disc stops it being a ring.
 
-**E — Storm Lance.** A bolt leaves the caster's hand and a bundle of lightning filaments is drawn
-out behind the strike front, holds while it gutters and re-strikes, then blows out. Sparks come
-off it the whole way, the floor underneath takes a branching electric burn and a dark scorch, and
-the far end gets a shell of ionised air.
+**E — Kraken Crown.** A slick of black water runs out to the aimed point, the flagstones inside the
+circle give way, and a ring of cephalopod arms hauls itself out of the rift — uncoiling as it comes,
+rearing back over the floor — and then *hammers the middle of the footprint* over and over. Each
+landing throws stone, spray and ink, the slams arrive as rolling thunder rather than in unison, and
+the cast ends with one synchronised slam and the arms dragging themselves back into the hole.
 
-**R — Cinder Fall.** A burning rock is lobbed downrange on an arc, trailing a raymarched wake of
-burning gas and heating up the whole way: the lava seams splitting its surface prise wider and
-brighter as it comes in. It detonates on arrival, throws its own shattered chunks across the floor, and tears the
-ground open into a network of molten cracks that keep glowing while the crater burns out.
+**R — Electrical Sphere.** A line of current is whipped out across the floor; where it lands the
+ground splits, a containment platform blooms out, and a dark polished sphere rises out of the middle
+and hovers there — mirroring the room, ringed in Fresnel light, electricity crawling flat across its
+skin and arcs tearing off it — until it collapses inward and vanishes.
 
-**F — Nova Beam.** The caster winds a ball of light up in both hands, pulling motes in out of the
-air, then lets a column of it out along the line — white-hot core, cyan sheath, gold ribbons
-spiralling around it and shock discs racing down it. It *holds* there, burning into the floor and
-throwing spray back up the beam, before collapsing to a thread and blinking out. The only cast in
-the sandbox that is still happening a second after it landed.
+**F — Earthen Spire.** The only line cast. A crust of stone plates is laid down along the aimed line
+behind a travelling front, a fracture wave trails the head and breaks the crust open, boulders are
+thrown up through the cracks, and — at the end of the line — a stone tower climbs out of the floor
+with a ring of boulders shouldered up around its plinth.
 
-**V — Voltaic Snare.** The far cast. A leash of current is whipped out across the floor, and where
-it lands the ring snaps open past its own radius and pulls back onto it: a violet column tears up
-out of the middle, tendrils crawl outward to the boundary, arcs run around the rim and the whole
-disc burns. It holds there re-striking and hauling the air up into the pillar, then collapses to a
-thread. The circle you measured out before the click is exactly the circle you get.
+**V — Verdant Gate.** The first gate cast. A seam of green races along the aimed line to the site,
+quarried blocks break out of the floor outside the footprint and swing up into their slots, both
+jambs climbing together, the outer courses lagging the inner ones, the keystone seating last with
+the only shake worth feeling — and then the portal floods the opening and *stays lit* until another
+gate is raised, at which point the standing one is asked to come apart, keystone first.
 
-Everything you can see is generated. There are no textures, no sprite sheets and no meshes on
-disk except the character: the crystals are procedural geometry, the bolt is a strip of ribbon
-placed entirely by a vertex shader, the meteor is an icosphere cratered and sliced by fracture
-planes on the CPU, the beam is a parametric tube drawn three times at three radii, the snare's
-whole cage is that same ribbon strip threaded along four different parametric paths, the arrow, the
-targeting circle, the rime, the burns and the molten cracks are signed-distance and noise shaders,
-and the mist, sparks, chips and glitter are GPU particles.
+**X — Tidewrought Ring.** The first ring cast. A tide of light runs out along the aimed line, the
+ring is then *forged lying down* — segments swing in out of a wide orbit in the ground plane,
+spiralling inward against the ring's own rotation and locking from the foot upward, both arcs closing
+on the crown, with a band of runes lighting behind them one mark at a time — the finished hoop
+stands up, hinging off the floor about its own lateral axis and settling a few degrees past
+vertical, and the horizon irises open from the middle out, slams into the rim, and stays lit.
 
-**Every parameter is a live slider** — 938 of them — and they stay live while the simulation is
-paused. That is the point of the project: freeze a frame mid-eruption, mid-strike or mid-burn with
-**P**, then reshape the silhouette, the palette and the timing against a still image.
+**Z — Fire Portal.** The first scribe cast. A black disc is *struck* into existence — a spark is lit
+at the foot of the circle and runs all the way round it, and the contour it traces is the way
+through, drawn from the middle out. The ring behind the disc is a circle standing in the air that
+throws stretched sparks off itself on a tangent, all the way round, every frame. The way through is
+the only portal in the sandbox that *takes* the opening away rather than putting light in it.
 
-References for the look: `icecast.jpg`, `thundercast.jpg`, `superbeam.jpg` and
-`electricalboost.jpg`.
+Outside the arm-and-cast loop sit three self-buffs: **B** Electric Boost, **M** Magic Boost, **K**
+Fire Boost. None of them is selected, none of them is aimed, and any of them, all of them, or none
+can be running at once.
+
+Everything you can see is generated. There are no sprite sheets and no meshes on disk except the
+character: the blades are procedural geometry, the arms are procedural tubes bent entirely in a
+vertex shader, the electrical arcs are instanced ribbon, the plates and rocks and gate blocks are
+procedural geometry, the beam of light through the portal and the hole through the fire portal are
+two passes of one quad, the arrow, the targeting circle, the burns and the molten cracks are
+signed-distance and noise shaders, and the mist, sparks, embers, ink and chips are GPU particles.
+
+**Every parameter is a live slider** — and they stay live while the simulation is paused. That is
+the point of the project: freeze a frame mid-eruption, mid-strike or mid-burn with **P**, then
+reshape the silhouette, the palette and the timing against a still image.
 
 ---
 
@@ -73,7 +92,7 @@ npm run preview
 
 ### Assets
 
-Six binary assets are served from `public/` and loaded automatically at boot:
+The binary assets are served from `public/` and loaded automatically at boot:
 
 | File | Purpose |
 | --- | --- |
@@ -81,8 +100,10 @@ Six binary assets are served from `public/` and loaded automatically at boot:
 | `public/models/diffuse.png` | The character's colour map |
 | `public/models/cast1.fbx` | Cast animation |
 | `public/models/cast2.fbx` | Cast animation |
-| `public/models/cast3.fbx` | Cast animation — the default for Frost Lance, Root Snare and Glacier Crown |
-| `public/hdri/spruit_sunrise.hdr` | HDR probe used for image-based lighting and crystal reflections |
+| `public/models/cast3.fbx` | Cast animation |
+| `public/hdri/spruit_sunrise.hdr` | HDR probe used for image-based lighting and reflections |
+| `public/textures/cathedral/*.jpg` | The stone tiling that dresses the stage floor (albedo, normal, roughness, AO) |
+| `public/textures/textures.glb` | A small material library kept as a fallback for the character skin |
 
 All four FBX files are Mixamo exports of the same rig, each carrying a skinned mesh plus one
 animation stack. The character comes from the idle file; the cast files are loaded for their clip
@@ -95,12 +116,11 @@ the imported materials are converted to PBR — an FBX that *does* carry an embe
 own, since that map is authored against its own UVs.
 
 Every ability picks the clip it throws — `castAnim` in its settings block, a dropdown under **The
-cast** in its editor folder. Out of the box slots 1, 5 and 6 — Frost Lance, Root Snare and Glacier
-Crown — throw `cast3`, and the other three throw `cast1`. The clip is a one-shot laid over
-the looping idle, with `character.castBlendIn` / `castBlendOut` as the two edges of that overlap.
+cast** in its editor folder. The clip is a one-shot laid over the looping idle, with
+`character.castBlendIn` / `character.castBlendOut` as the two edges of that overlap.
 
-The HDR is loaded as image-based lighting and as the reflection source for the ice — it is never
-shown as a visible sky. The stage keeps its flat dark backdrop.
+The HDR is loaded as image-based lighting and as the reflection source for the electrical sphere and
+the magic boost ribbon. The stage keeps its flat dark backdrop; the HDR is sampled, never shown.
 
 ---
 
@@ -130,8 +150,8 @@ shown as a visible sky. The stage keeps its flat dark backdrop.
 
 `range` and `minRange` are per ability, so the indicator's reach changes with the slot you have
 selected. Aiming closer than the selected ability's `minRange` tints it red and refuses the cast;
-set `minRange` to 0 if you would rather cast at your own feet, which is what the Snare ships with —
-a trap you cannot drop on yourself is missing half its uses. Cooldowns are per ability too, so
+set `minRange` to 0 if you would rather cast at your own feet, which is what the Pyre Crown ships
+with — a ring of fire around your own feet is a legitimate play. Cooldowns are per ability too, so
 spending one slot never locks the other out.
 
 The three boosts are not slots: nothing selects them and nothing aims them, so they sit outside the
@@ -149,24 +169,27 @@ paused.
 
 ```
 src/
-  abilities/      Ability base class (the travelling front), IceAbility, ThunderAbility,
-                  MeteorAbility, BeamAbility, SnareAbility, pooling manager
+  abilities/      Ability base class (the travelling front, phase machine, light bookkeeping),
+                  PyreAbility, KrakenAbility, ElectricalSphereAbility, EarthAbility,
+                  PortalAbility, AetherRingAbility, FirePortalAbility, AbilityManager
   animation/      FBX character loading, AnimationMixer, the per-ability cast clips,
                   the procedural cast lunge
-  assets/         Procedural crystal and asteroid geometry, the bolt ribbon strip,
-                  the beam tube and its shock discs
+  assets/         Procedural geometry: crystals, plates, blocks, rocks, towers, arms,
+                  bolt ribbon strip
   config/         settings.js — the single source of truth for every parameter
   core/           App, Renderer, CameraRig, Time, Layers, shared frame uniforms
-  effects/        Aim arrow, far-cast circle, ground decals, fissures, bursts,
-                  light pool, shake, flash
-  input/          InputManager (events) and AimController (both targeting shapes)
+  effects/        Aim arrow, far-cast circle, gate/ring/scribe templates, reach ring,
+                  ground decals, fissures, bursts, light pool, the three boosts,
+                  shake, flash
+  input/          InputManager (events) and AimController (the five targeting shapes)
   loaders/        AssetLoader with a shared LoadingManager
-  materials/      IceMaterial, LightningMaterial, MeteorMaterial,
-                  VolumetricFireMaterial, BeamMaterial, SnareMaterial
+  materials/      PyreMaterial, KrakenMaterial, ElectricalSphereMaterial, RockMaterial,
+                  GlassMaterial, RadialBoltMaterial, EmberFieldMaterial, AbyssFieldMaterial,
+                  FireBodyMaterial, FresnelAura, ArcaneRibbonMaterial
   particles/      GPU particle system + engine and rate emitters
-  postprocessing/ Composer pipeline, grade shader, distortion shader
+  postprocessing/ Composer pipeline, grade shader
   shaders/lib/    Shared GLSL: noise library, common helpers
-  ui/             HUD, lil-gui editor, preset manager, styles
+  ui/             HUD, lil-gui editor, preset manager, glyphs, styles
   utils/          Maths, colour cache, pooling, disposal, shader patching
   world/          Environment (stage lighting), floor, dust, contact shadows
   archive/        The retired four-element sandbox — see archive/README.md
@@ -180,39 +203,45 @@ src/
 
 `src/config/settings.js` holds every tweakable value. Nothing else owns that state: shaders,
 particle systems, lights and post passes *read* those objects every frame. That is what makes the
-editor work with no rebuild — moving a slider changes the ice field that is already standing, the
-next cast, the environment and the post stack at once. Preset loading deep-merges *into* the same
+editor work with no rebuild — moving a slider changes the crown that is already standing, the next
+cast, the environment and the post stack at once. Preset loading deep-merges *into* the same
 objects so every live binding stays valid.
 
 ```js
 import { settings } from './config/settings.js';
-settings.ice.height = 7;          // visible on the next frame, even mid-cast
-settings.thunder.jitter = 1.2;    // re-kinks a bolt that is already in the air
-settings.global.timeScale = 0.1;  // slow the whole cast to a crawl
+settings.pyre.height = 7;          // visible on the next frame, even mid-cast
+settings.kraken.zoneRadius = 5;     // re-hammers a rift that is already standing
+settings.global.timeScale = 0.1;    // slow the whole simulation to a crawl
 ```
 
 Ability blocks are keyed by their id in `ELEMENTS`, and the shared systems that need to know
 "which ability is the player holding" — the aim controller, the cooldowns, the HUD — look it up as
 `settings[element]`. The four fields they rely on being present are `range`, `minRange`, `speed`
-and `cooldown`; a far cast adds a fifth, `zoneRadius`. Everything else in a block is that ability's
-own business.
+and `cooldown`; a far cast adds a fifth, `zoneRadius`, and a ring or scribe cast adds a sixth,
+`ringRadius` and `ringHover`. Everything else in a block is that ability's own business.
 
 ### The rule that makes "edit while paused" work
 
-A spike record in `IceAbility` stores **only what the dice decided**: a position *fraction* along
-the line, a signed lateral *fraction*, and a handful of unitless jitters. Not one metre, radian or
-second is captured when the cast starts. Every dimension is resolved against `settings.ice` inside
-the update loop, which runs on a zero-length frame too.
+A blade record in `PyreAbility` stores **only what the dice decided**: a seat, a height jitter, a
+lean, a combustion delay. Not one metre, radian or second is captured when the cast starts. Every
+dimension is resolved against `settings.pyre` inside the update loop, which runs on a zero-length
+frame too.
 
-So dragging `height` re-grows a field that is already standing; dragging `lean` re-tilts it;
-dragging `clumping` re-packs it toward the centre line. The only values a record *does* capture
-are timestamps — the moment its own eruption was triggered. Those are events, not dimensions.
+So dragging `height` re-grows a crown that is already standing; dragging `clumping` re-packs it
+toward the centre line; dragging `zoneRadius` re-hammers a kraken that is already mid-strike. The
+only values a record *does* capture are timestamps — the moment its own eruption was triggered.
+Those are events, not dimensions.
 
 The four *shape* controls (`facets`, `taper`, `roughness`, `bend`) cannot be expressed as a
-per-instance transform, so they are baked into the geometry instead — and a six-sided crystal is
-just 60 triangles, cheap enough to regenerate outright rather than approximate in a vertex shader.
-`IceAbility#_syncGeometry` hashes those four values and rebuilds the three crystal meshes when the
+per-instance transform, so they are baked into the geometry instead — and a six-sided blade is just
+60 triangles, cheap enough to regenerate outright rather than approximate in a vertex shader.
+`PyreAbility#_syncGeometry` hashes those four values and rebuilds the three blade meshes when the
 hash changes, which is what keeps them live sliders rather than restart-required constants.
+
+The same rule runs through every ability in the project. The kraken arms store dice, never metres;
+the arms' length is derived from `zoneRadius` through the closed form for a constant-curvature
+arc, which is the one piece of geometry the file owns outright, and every other pose is read off
+`settings.kraken` on every update.
 
 ### Aiming
 
@@ -225,13 +254,15 @@ clamps the distance into `[minRange, range]`, tracks a 0..1 reveal envelope, and
 It runs on **real** time rather than the scaled simulation delta, so the indicator keeps animating
 while the sandbox is paused.
 
-There are three indicators and one controller. Which one is drawn comes from
-`ELEMENT_META[element].cast` — `CastShape.LINE`, `CastShape.ZONE` or `CastShape.GATE` — and that is
-the *only* thing the three shapes disagree about. Arming, clamping, validating, revealing and
-firing are shared, and all three end in the same three-argument `cast` event, because from the
-targeting side a far cast is a line cast you only care about the far end of, and a gate cast is one
-you also care about the heading of. That is why neither zone nor gate targeting needed a change in
-`Ability` or `App`: both read their site as `pointAt(1)` and work outward from there.
+There are five indicators and one controller. Which one is drawn comes from
+`ELEMENT_META[element].cast` — `CastShape.LINE`, `CastShape.ZONE`, `CastShape.GATE`,
+`CastShape.RING` or `CastShape.SCRIBE` — and that is the *only* thing the five shapes disagree
+about. Arming, clamping, validating, revealing and firing are shared, and all five end in the same
+three-argument `cast` event, because from the targeting side a far cast is a line cast you only
+care about the far end of, a gate cast is one you also care about the heading of, a ring cast is
+one you also care about the upright pose of, and a scribe cast is one that has no footprint at
+all. That is why none of those targeting shapes needed a change in `Ability` or `App`: each reads
+its site as `pointAt(1)` and works outward from there.
 
 ### The far-cast circle
 
@@ -269,7 +300,7 @@ a six-fold frost rosette pinned to the impact point, and the sweep-out when the 
 
 ### The gate template
 
-The third targeting shape, and the first one that leaves the floor. An arrow answers *which way*
+The second targeting shape, and the first one that leaves the floor. An arrow answers *which way*
 and a circle answers *how much ground*; neither answers the question a **structure** raises, which
 is what will be standing there and which way it will face.
 
@@ -286,7 +317,7 @@ so the preview and the gate that gets built can never disagree.
 
 ### The ring template
 
-The fourth targeting shape, and the first one that previews a **sequence** rather than a shape.
+The third targeting shape, and the first one that previews a **sequence** rather than a shape.
 
 The gate template can stand its silhouette up and leave it standing because a doorway is built
 where it stands. A ring is not: it is forged flat on the floor and then raised, so a template that
@@ -303,10 +334,171 @@ with the rift surface, the way `archDistance` is shared with the portal's.
 Like the gate's ghost, it reads `ringRadius` and `ringHover` off the ability rather than off its own
 settings block, so the preview and the ring that gets built can never disagree.
 
+### The scribe template
+
+The fourth targeting shape, and the only one that does not answer a question about the floor. A
+gate takes a *footprint* and a ring takes a *footprint*; a portal cut in mid-air has a reach and
+has no footprint at all.
+
+`ScribeIndicator` is the circle the spark will run round, held at `ringHover` off the floor so the
+player can see what height the portal will hang at. It never touches the ground; the reach ring
+alone carries the distance read, because a structure with no base needs no shadow of itself on
+the floor. Like the ring and gate templates, it reads `ringRadius` and `ringHover` off the
+ability rather than off its own settings block.
+
+### The earth
+
+`EarthAbility` is the only line cast, and the only ability whose travelling front is the whole
+point rather than a lead-in to something that happens at the end of the line.
+
+The arrow is read as usual; the front then races along the line at the live speed and lays down
+three things in order. First, a **crust of stone plates** that surfaces flush with the floor as
+the head passes over it. Second, a **fracture wave** that trails the head by `crackDelay` and
+breaks that crust — plates heave, tip over, drop into the seams and slide apart. Third, at the end
+of the line, a **stone tower** climbs out of the floor with a ring of boulders shouldered up
+around its plinth. All three are real geometry (instanced plates, instanced rocks, one tower
+mesh) so they take the scene's shadows, and everything is pooled — a cast allocates nothing.
+
+The tower is the one piece worth calling out. Its body is a procedural cylinder of stone
+segments — `createTowerGeometry` — that builds in courses, the outer courses lagging the inner
+ones. Inside the cylinder sits a `GlassMaterial` core carrying a slow swirl of its own colour,
+which is what makes the tower *glow* rather than just be lit: the room shadows the outside, the
+core carries the light. A thin outline of additive bloom hugs the silhouette; drag `glow` and
+the whole tower reads as something hot inside, drag it to zero and the same tower reads as
+weathered stone.
+
+The base class's linear phase machine does the front travel and the phase transitions; this file
+just resolves every metre and second against `settings.earth` inside the update loop, which is
+what keeps the editor live.
+
+### The pyre
+
+`PyreAbility` is the first **far cast** and the first ability to plant something in a ring. A
+line of fire runs out across the floor to the aimed point, the ground inside the circle splits and
+goes molten, and a ring of burning blades tears up out of it — leaning outward, fanned so they
+cross, of wildly uneven height — which stands, burns, throws embers up through its own middle on
+the column of hot air over the crater, and is then **consumed**.
+
+The **middle stays open** on purpose. Every blade is seated in a band about `zoneRadius` and
+nothing is planted in the centre of the footprint, because the read of the ability is a wall you
+are looking *into* — fill the disc and the ring stops being a ring. The pyre is kept as a control
+(`coreShare`) but ships at zero.
+
+Three roles, three draw calls, three silhouettes. Each role is its own `InstancedMesh` because
+the *facets* differ, not just the proportions — per-instance scaling alone cannot buy that
+silhouette variety.
+
+Three pieces worth calling out:
+
+**The blades are opaque fire, not transparent glass.** `PyreMaterial` is one domain-warped flame
+field, squashed along the blade's axis and scrolled so it climbs, run through one four-stop heat
+ramp and then pushed through a contrast curve (`sharp`) — which is the single control that turns
+a soft gradient into tongues with black voids between them. The whole blade is emissive; the
+HDR is sampled for the highlight, not for the body.
+
+**The eruption is strictly monotonic.** A flame that bounces onto its height reads as rubber; a
+physical blow that *did* bounce is a different effect, and the pyre is not trying to be one. There
+is no overshoot term in the Pyre's settings block at all. `riseSnap` blends two curves that both
+land exactly on 1 and neither of which crosses it, and `creep` then approaches a little past full
+height from *below*, forever, which is what a flame does when it settles.
+
+**The air inside rises.** The signature is an updraft — embers released at the floor and carried
+up the column over the crater, orbiting its middle as they climb (`ParticleSystem`'s swirl mode,
+anchored on the centre). `ParticleSystem`'s swirl is the only thing in the project that gives
+particles an angular velocity, and it is the only thing the pyre needs, because what *says* fire
+isn't the flame field on the blades — it is the column of hot air the blades are standing in.
+
+### The kraken
+
+`KrakenAbility` is the second **far cast**, and the first ability in the sandbox made of something
+that is *alive*.
+
+Where the pyre's identity is in its material, the kraken's is in its motion. Both crown the
+footprint with a ring of things around the edge and leave the middle empty; the pyre's blades
+are static the moment they reach full height, and the kraken's arms are never the same on two
+consecutive frames. This is the ability the editor is most worth pausing for, because the beat
+is the content.
+
+Five beats, in order. (1) **Travel** — the wet surge runs out across the floor, slicking it.
+(2) **Tear** — the rift opens outward to the boundary and the arms come up as a sweep, the
+nearest first, the wave running around both sides. Each arrives *coiled* and uncoils onto its
+rear as it rises, because that is what actually comes out of a hole: a curl, opening. (3)
+**The hammering** — the body of the cast. Every arm runs its own strike cycle — rear, whip,
+press, peel — scattered around the ring so the slams arrive as rolling thunder rather than in
+unison. The whips run theirs faster and land far lighter. (4) **The finale** — one strike that
+ignores the scatter: every arm lands on the same frame, on the same spot, and the room is hit
+accordingly. (5) **Withdrawal** — the arms shorten back into the rift, tips last, and the water
+closes over them.
+
+Two pieces of that are worth calling out:
+
+**The arms actually hit the middle, and it is arithmetic rather than tuning.** A constant-curvature
+arc of length `L` turning through `Θ` puts its tip `L(1−cosΘ)/Θ` along the bend and `L·sinΘ/Θ`
+above the floor. At `Θ = π` that is `(2L/π, 0)` — on the ground. So an arm of length `πR/2` seated
+on a footprint of radius `R` strikes its exact centre, and the ability derives every arm's length
+from `zoneRadius` through that identity rather than from a tuned constant. Drag the footprint
+slider *while they are hammering* and they keep hitting the middle. The same closed form gives
+the CPU the impact point for free — no readback, no guess — which is what every slam's shockwave,
+debris and spray is placed with.
+
+**The arm is bent in the vertex shader.** `createTentacleGeometry` bakes a tapered tube standing
+straight up +Y and it is never drawn in that shape. `KrakenMaterial` integrates a curvature
+profile — a lean, a curl and a travelling wave — up the arm, per vertex, per frame, and rebuilds
+the local frame at every ring from the same integral. Coiling out of a hole, rearing, whipping
+down and peeling back off the floor are that profile with four numbers moved. Nothing about the
+animation touches the CPU, and one `InstancedMesh` per silhouette draws the whole ring.
+
+The skin is the only shaded material in the file that is not energy. It is lit by the room's own
+sun, has a wet specular coat and one sample of the HDR probe, and carries three things nothing
+else does: chromatophore bands travelling the length of the arm (real cephalopods do exactly
+this, and it is what says *alive*), two staggered rows of suckers laid down the ventral face —
+which is why the baked `uv.x = 0` is anchored on the side the arm curls toward — and
+bioluminescence spent almost entirely on the sucker rims, because the inside of a curl is the
+side that faces you across the ring.
+
+The air inside hangs. The Pyre Crown's embers race up; the Kraken Crown's marine snow does
+neither: high drag and near-zero gravity, so the motes lose their launch speed at once and simply
+sit there, turning slowly about the throat. It is what says the space inside this ring is full of
+water.
+
+Its rift splits the same way the Pyre Crown's crater does, and for the same reason: the dark half
+is a `SCORCH` decal in deep navy under an additive quad.
+
+### The electrical sphere
+
+`ElectricalSphereAbility` is the third **far cast**, and the only one that *holds* a single
+object in the air.
+
+The caster whips a line of current out across the floor to the aimed point; where it lands the
+ground splits, a containment platform blooms out, and a dark polished sphere rises out of the
+middle and hovers there — mirroring the room, ringed in Fresnel light, electricity crawling flat
+across its skin and arcs tearing off it — until it collapses inward and vanishes.
+
+The whole effect is three GPU shaders, all of which read `settings.electrical` every frame and
+re-resolve themselves on a zero-length frame, so the editor's sliders reshape a sphere that is
+already standing, with the clock paused.
+
+- **`createSphereBodyMaterial`** — the sphere itself: an opaque, near-black reflective shell. It
+  mirrors the scene HDR in the view-reflection direction with a Fresnel weight, takes a hard
+  specular glint, carries a restriking discharge net across its skin, and is lit around its
+  silhouette by Fresnel alone. It writes depth, so it occludes properly.
+- **`createPlatformMaterial`** — the containment disc on the floor. Same vocabulary (rings, hex
+  grain, hot inner band, outward pulse rings) so the sphere reads as seated on a device.
+- **`createRadialBoltMaterial`** — the chaotic arcs. Instanced ribbon geometry; every instance is
+  a bolt from a random point on the sphere surface to a random point out in space, re-struck on
+  its own clock.
+
+The pulse is a `pulse()` function of `age` — a smooth organic envelope that fires roughly twice a
+second. It is *added* to the materials' `uPulse` uniform and *multiplied* into the particle
+emitter rates, so the whole effect breathes in time. It is **not** a scale animation.
+
+A cast captures a seed, and a few timestamps. Nothing else. The radius, the noise scale, the arc
+count, the pulse frequency — every one of them is read off `settings.electrical`.
+
 ### The gate
 
-`PortalAbility` is the first cast that **builds** something and leaves it there. Everything else in
-the sandbox is an event — it happens, it fades, the pool takes it back. A gate is a place.
+`PortalAbility` is the first cast that **builds** something and leaves it there. Everything else
+in the sandbox is an event — it happens, it fades, the pool takes it back. A gate is a place.
 
 Three beats. A seam of green races along the aimed line to the site (the base class's travelling
 front, doing its usual job). The arch is then **constructed**: quarried blocks break out of the
@@ -318,11 +510,11 @@ standing one is asked to come apart, keystone first.
 Two pieces of that are worth calling out:
 
 **The stones hold no metres.** Each one stores where it sits along the contour as a signed 0..1 —
-which jamb, and how far up toward the keystone — plus its course and its dice. Every position, angle
-and size is resolved against `settings.portal` each frame, so dragging the span of a gate that has
-been standing for a minute re-lays the whole arch around the new opening, keystone included, while
-the clock is paused. It is the same rule the rest of the project runs on, and a standing structure
-is where it pays the most: this is the one cast you can walk around and study.
+which jamb, and how far up toward the keystone — plus its course and its dice. Every position,
+angle and size is resolved against `settings.portal` each frame, so dragging the span of a gate
+that has been standing for a minute re-lays the whole arch around the new opening, keystone
+included, while the clock is paused. It is the same rule the rest of the project runs on, and a
+standing structure is where it pays the most: this is the one cast you can walk around and study.
 
 **The opening is never geometry.** The surface is one quad carrying the arch's SDF in its fragment
 shader, which is why the aperture can flood open and the span can be dragged without anything being
@@ -347,10 +539,10 @@ them is when and where the pieces move.
 
 Four beats. A tide of light runs out along the aimed line. The ring is then **forged lying down** —
 segments swing in out of a wide orbit *in the ground plane*, spiralling inward against the ring's
-own rotation and locking from the foot upward, both arcs closing on the crown, with a band of runes
-lighting behind them one mark at a time. The finished hoop **stands up**, hinging off the floor
-about its own lateral axis and settling a few degrees past vertical. Then the horizon **irises
-open** from the middle out, slams into the rim, and stays lit.
+own rotation and locking from the foot upward, both arcs closing on the crown, with a band of
+runes lighting behind them one mark at a time. The finished hoop **stands up**, hinging off the
+floor about its own lateral axis and settling a few degrees past vertical. Then the horizon
+**irises open** from the middle out, slams into the rim, and stays lit.
 
 Three pieces of that are worth calling out:
 
@@ -391,274 +583,120 @@ stones and the ring swings segments into a hoop; this one has no pieces at all. 
   throws stretched sparks off itself on a tangent, all the way round, every frame.
 
 Nothing in `src/abilities/FirePortalAbility.js` draws a curve. The sparks leave on a straight
-tangent and the particle system's **drag** is what bends them into the long lines — low drag gives a
-starburst, high drag scrolls them tight around the rim. `sparkLife` is then how far the fan reaches,
-because the colour is the system's own lifetime gradient and nothing else: white where a spark is
-born, orange through the middle of its life, red as it goes out. There is no noise, no shear and no
-second surface anywhere in the ability; the whole look is the ring's line, the disc behind it, and
-how those four colours are spread across one lifetime.
+tangent and the particle system's **drag** is what bends them into the long lines — low drag gives
+a starburst, high drag scrolls them tight around the rim. `sparkLife` is then how far the fan
+reaches, because the colour is the system's own lifetime gradient and nothing else: white where a
+spark is born, orange through the middle of its life, red as it goes out. There is no noise, no
+shear and no second surface anywhere in the ability; the whole look is the ring's line, the disc
+behind it, and how those four colours are spread across one lifetime.
 
 It is not switched on, it is **struck**. A spark is lit at the foot of the circle and runs all the
-way round it in `scribeTime`, and three things hang off that one clock: the fragment shader refuses
-to draw contour the spark has not reached yet, the stroke immediately behind it burns `scribeTrailHeat`
-times hotter than the settled ring and cools over `scribeTrail` metres, and the emitter stops
-dressing the whole circle — during the draw every spark is born within `scribeTail` of the running
-head and carries a share of its travel, so the shower is a moving source rather than a ring
-dissolving into view. Only once the spark is nearly home (`apertureDelay`, a fraction of the draw)
-is the way through allowed to start irising open inside what it drew.
+way round it in `scribeTime`, and three things hang off that one clock: the fragment shader
+refuses to draw contour the spark has not reached yet, the stroke immediately behind it burns
+`scribeTrailHeat` times hotter than the settled ring and cools over `scribeTrail` metres, and the
+emitter stops dressing the whole circle — during the draw every spark is born within `scribeTail`
+of the running head and carries a share of its travel, so the shower is a moving source rather
+than a ring dissolving into view. Only once the spark is nearly home (`apertureDelay`, a fraction
+of the draw) is the way through allowed to start irising open inside what it drew.
 
-The mask is the fiddly part, and both its ends are feathered on purpose. A plain angular cut steps
-at the head *and* falls off a cliff at the seam where the angle wraps, which slices the ring's bloom
-down a radial line and hangs a straight edge in the air below the circle; feathering both ends — by
-an amount that widens with distance off the contour, because the mask is angular and the bloom is
-not — lets the glow bleed a little back round the start, which is what the beginning of a stroke
-looks like.
+The mask is the fiddly part, and both its ends are feathered on purpose. A plain angular cut
+steps at the head *and* falls off a cliff at the seam where the angle wraps, which slices the
+ring's bloom down a radial line and hangs a straight edge in the air below the circle; feathering
+both ends — by an amount that widens with distance off the contour, because the mask is angular
+and the bloom is not — lets the glow bleed a little back round the start, which is what the
+beginning of a stroke looks like.
 
-The one setting that can ruin it is `ringInner` — how far the ring's bloom licks back over the hole.
-Past a couple of centimetres the middle lights, and the hole is the ability.
+The one setting that can ruin it is `ringInner` — how far the ring's bloom licks back over the
+hole. Past a couple of centimetres the middle lights, and the hole is the ability.
+
+### The two crowns
+
+The Pyre Crown and the Kraken Crown are the same shape twice, and they are in the project on
+purpose: they are the clearest statement it makes about where an ability's identity actually
+lives.
+
+Both fill a footprint the same way — a ring of things seated at `zoneRadius`, a skirt banked
+against the foot, and a **middle left empty**, because the read of both is a wall you are looking
+*into* and filling the disc stops it being a ring. Both erupt as a sweep that starts on the
+bearing the front arrived on and runs around both arms to close at the far side. Their settings
+blocks share slider names line for line (`height`, `clumping`, `zoneRadius`, `coreShare`, the
+birth-fade timings, the burst thresholds), which is what makes them comparable: you can tune one
+against the other.
+
+Everything that tells them apart is material and timing.
+
+- **The thing itself.** The Pyre's blade is opaque fire — one domain-warped flame field, squashed
+  along the blade's axis and scrolled so it climbs, run through one four-stop heat ramp and then
+  pushed through a contrast curve. The Kraken's arm is the only shaded material in the project
+  that is not energy: lit by the room's own sun, with a wet specular coat and one sample of the
+  HDR probe, carrying chromatophore bands and two rows of suckers. The Pyre's blade lives on
+  bloom; the Kraken's arm does not, because a wet skin washed out by the bloom pass would not
+  look wet any more.
+- **The arrival.** The Pyre's eruption is strictly monotonic — a fast, front-loaded surge that
+  decelerates onto full height and then only ever *creeps* upward, asymptotically. There is no
+  overshoot term in its settings block at all. The Kraken's arms uncoil onto their rear as they
+  rise, the curl that *is* the shape opening; they never arrive in a straight line.
+- **The air inside.** The Pyre's signature is an updraft — embers caught in the column over the
+  crater, orbiting its middle as they climb. The Kraken's is marine snow with high drag and
+  near-zero gravity, the motes losing their launch speed at once and turning slowly about the
+  throat. What says fire is the column of hot air; what says water is the column doing nothing.
+- **The departure.** The Pyre is **consumed**: the same combustion front that lit the blade from
+  the ground up runs backwards from the point down, with an ember rim riding it and the body
+  draining to ash behind it. The Kraken retreats: the arms shorten back into the rift, tips last,
+  and the water closes over them.
+- **The room.** The Pyre is the only live ability that writes to `LAYER.DISTORTION`. A fire that
+  does not bend the floor behind it reads as a decal on the lens, and no amount of extra flame
+  geometry fixes that.
+
+The Kraken is also the project's argument that identity can live in the *motion*. Both crowns
+have similar silhouettes; what makes the Kraken worth its own ability is that it is never the
+same on two consecutive frames, and the beat — the rolling scatter, the synchronized finale, the
+arithmetic that places the slam on the centre — is the content.
 
 ### Persistent casts
 
 `Ability#isPersistent` is the whole of "the gate stays open". A persistent cast is never the one
 retired to make room when `MAX_CONCURRENT` is reached — a gate four fireballs can delete is not a
 gate that stays open — and only one of its element may stand at a time, so casting it again calls
-`dismiss()` on the standing one and lets it play its collapse. The rule is per element, not global,
-which is why a gate and a ring can stand at the same time and a second ring only ever dismisses the
-first ring. Both rules live in `AbilityManager`
-rather than in the ability, because they are questions about the *set* of live casts.
+`dismiss()` on the standing one and lets it play its collapse. The rule is per element, not
+global, which is why a gate and a ring can stand at the same time and a second ring only ever
+dismisses the first ring. Both rules live in `AbilityManager` rather than in the ability, because
+they are questions about the *set* of live casts.
 
 It also gives the camera back: `wantsCamera` is true while the gate is being built and false once
 it is standing, or a gate raised a minute ago would pin the camera forever and make every later
 cast unwatchable.
 
-### The ice
+The Fire Portal is the third persistent cast, and the one whose `dismiss()` is least dramatic: a
+portal that closes the way it opened — the way through irises shut from the rim in, the ring
+cools and falls, the sparks die on their own.
 
-`materials/IceMaterial.js` patches a `MeshStandardMaterial` rather than replacing it, so the
-crystals cast and receive the stage's real shadows and pick up the HDR probe. The stylisation is
-injected on top:
+### The three boosts
 
-- **Thickness tint** — a facet seen head-on has the longest path through the crystal, so it
-  darkens toward `colorDeep`; grazing edges stay pale. This is the term that makes the field read
-  as a solid you can see *into* rather than as blue plastic.
-- **Internal fracture** — ridged noise sampled in **world** space, so the crack planes stay a fixed
-  physical size whether a spike is ankle-high or three metres tall, and neighbouring crystals look
-  quarried from the same block.
-- **Feather frost and rime** — fbm sampled in **local** space (0..1 up the crystal), so the milky
-  veining and the frost creeping up from the base follow each spike's own axis however it is
-  scaled or leaned.
-- **Glint** — a hard-thresholded high-frequency field scrolling in world space, biased toward
-  grazing angles, which is where real ice catches.
-- **Birth flash** — a per-instance attribute the ability drives from 1 to 0 over `birthFade`, so a
-  crystal is lit from within for the moment it erupts.
+The three buffs are the same idea read three ways, and they sit outside the arm-and-cast loop on
+purpose: nothing selects them, nothing aims them, and the ability pool never hears about them.
 
-Three `InstancedMesh`es share one material. Three rather than one because the *facets* differ, not
-just the proportions — per-instance scaling alone cannot buy that silhouette variety, and three
-draw calls is a cheap price.
+**Electric Boost — a charge.** Press the key and the character is lit from the inside in cyan,
+struck with a corona of arcs and a Fresnel rim; release and the charge dies back to nothing. The
+arcs are the electrical sphere's ribbon strip worn on the body — instanced quads, one per arc,
+restruck on their own clocks.
 
-### The lightning
+**Magic Boost — a channel.** Press the key and the character is lit from the inside in violet,
+wrapped in slow ribbons of arcane light that wander and loop around them. Release and the ribbons
+pull back in. Where Electric Boost is hard and fast, this one is slow and wide; the Fresnel patch
+is the same, but the overlay is a wandering ribbon (`ArcaneRibbonMaterial`) rather than struck
+arcs.
 
-`ThunderAbility` takes the "no dimensions on the CPU" rule further than the ice does: there is no
-path object at all. The bolt is one `InstancedBufferGeometry` — a flat ladder of quads in
-*parameter* space, where each vertex carries only `(t, side)`: how far along the bolt it is, and
-which edge of the ribbon it is on. One instance is one filament. `materials/LightningMaterial.js`
-turns that pair into a world position every frame, so a single strip serves a bolt of any length,
-any shape and any width.
+**Fire Boost — a burn.** Press the key and the character *catches fire*: masked in heat, with
+flame rooted on the rig's actual bones (so the fire on a forearm swings with the arm) and orbited
+by embers that trail fire behind them. Release and the flames die. The orbiting embers are the
+distinguishing move: their wakes are the orbit *sampled backward in time* rather than a recorded
+path, which is why dragging their tilt re-sweeps a second of fire instantly, even paused.
 
-Three things stack to make the shape:
-
-- **the axis** — a straight line from the hand to the impact point, bowed by `sag`. The only part
-  that knows where the cast is pointing.
-- **the fan** — a constant per-filament offset in the plane perpendicular to the axis, opening
-  from `spreadNear` at the hand to `spread` at the target and rolling around the axis with
-  `twist`. This is what separates one filament from the next.
-- **the kinks** — octaves of *linearly* interpolated value noise. Linear on purpose: smoothstep
-  would round the corners off, and the corners are the entire reason it reads as lightning rather
-  than as a wobbly tube.
-
-The ribbon is turned to face the camera by crossing the local tangent with the view vector, which
-is why the bolt keeps its apparent thickness from any angle without ever being a screen-space
-line. It is drawn twice — a wide soft halo underneath and the hot core on top — because drawing
-the glow as real ribbon rather than leaving it to bloom is what keeps it *attached* to every kink.
-
-Two clocks run the flicker. `restrike` snaps every filament onto a new shape N times a second,
-and `crawl` slides the kinks continuously in between; together they stop a held bolt from looking
-like a static ribbon. A cast captures exactly one number — a seed, so two casts do not draw the
-identical bolt — and resolves every metre, radian and second against `settings.thunder` each
-frame. That is why dragging `jitter` re-kinks a bolt that is already in the air.
-
-The ground burns are worth a note as a thing *not* to do. The first version sampled the filament
-field on `atan(y, x)`, which hands every radius along a given bearing the same value and draws
-dead-straight spokes out of the centre — a firework, not a burn. Sampling the same noise in the
-plane and warping the lookup is what lets the filaments meander and fork.
-
-### The beam
-
-The Nova Beam shares the bolt's rule — no dimensions on the CPU — and reaches the opposite look
-with it. Where the bolt's whole charm is that its noise is *piecewise-linear* and keeps its
-corners, every noise term in the beam is smooth, stretched hard along the flow and crawling
-downrange. A beam that kinks is a bolt.
-
-It is a real tube rather than a camera-facing ribbon, because a column this thick has to *have* a
-cross-section: the silhouette must bow correctly when you orbit it, the far wall must add through
-the near one, and the shock discs have to hug it. `createBeamTubeGeometry` is the ribbon strip one
-dimension richer — every vertex carries `(t, a)`, how far along the barrel it is and how far around
-— and `materials/BeamMaterial.js` turns that pair into a world position each frame.
-
-That one tube is drawn three times, and the trick is in how the three are weighted:
-
-- **halo** — widest, nothing but a rim term. The atmosphere the beam is shoving out of the way.
-- **sheath** — rim-weighted, so it reads as *hollow* and its silhouette edges are its brightest part.
-- **core** — narrow, and weighted the **opposite** way: brightest where the view ray runs down the
-  barrel and its path through the tube is longest.
-
-Rim-weighted outside, axis-weighted inside, both faces adding: that is a volume integral, cheaply,
-and the inversion is the entire reason the middle reads as a solid rod of light instead of as a lit
-pipe. Widen `coreWidth` or push `coreFill` up and the three layers collapse into one white tube —
-the cyan sheath and the gold coils are only legible because the core leaves them room.
-
-Two more instanced passes put structure on it. The **coils** are the bolt's ribbon strip bent into a
-helix, camera-facing and warm on purpose — the colour split is what stops them dissolving into the
-sheath. The **shock discs** are an instanced annulus whose phase is `fract(index / count + time ×
-speed)`, so the train is a pure function of the clock and there is no queue on the CPU. Both place
-themselves against the same `beamRadius()` the tube uses, which is why all five stay welded together
-when the profile is dragged.
-
-The beam is also the one ability with a **fourth beat**. The other three run travel → impact →
-fade; this one puts a wind-up in front of that, and it needed nothing from the base class:
-`advance()` simply refuses to let the front leave the hand until the orb is up to power, so `IMPACT`
-becomes the burn and the phase machine is untouched. The far end therefore has an impact that keeps
-happening — spray thrown back up the line, pressure shells shed off the burning point, dust and
-shockwave rings pushed across the floor, all rate-throttled through the same fractional-rate emitter
-the particles use so every rate is a live slider.
-
-### The snare
-
-The Voltaic Snare is the first ability built around a *point* instead of a line, and the thing that
-holds it together is that `zoneRadius` is read in exactly one place per consumer and nowhere is it
-copied: the indicator measures it out, the tendrils end on it, the rim arcs run along it, the field
-burns it and the column's throat and flare are fractions of it. Drag it and all five move together,
-mid-cast, with the clock stopped.
-
-The whole cage — the whip that plants it, the pillar, the tendrils and the rim arcs — is **one
-instanced ribbon strip**, the same one the bolt and the beam's coils are drawn on. A filament's
-*role* is decided in the vertex shader by testing its instance index against four live counts, and
-the role picks which parametric path it is threaded along:
-
-- **leash** — a sagging line from the hand to the travelling tip, dropped onto the floor.
-- **column** — a twisting climb whose radius opens from `throat` to `columnSpread`.
-- **tendril** — a meander running outward, its veer a per-filament constant rather than noise, so
-  it curves the way a discharge that has committed to a direction does.
-- **rim** — an arc travelling around the boundary, hopping over it at mid-span.
-
-Every offset then lives in a frame taken by finite difference off that path, which is what lets one
-kink function serve a vertical pillar and a filament crawling flat across the floor. The two
-ground-hugging roles damp the vertical component of that offset and clamp above the floor — a kink
-with a free `y` buries half of every tendril and the effect reads as a broken dotted line. Setting
-a count to zero retires the role outright, which is how the leash disappears on the frame the ring
-takes over. Two draw calls cover all four roles, however many filaments are in the air.
-
-The **field** is a quad rather than a pooled decal for one reason: a decal captures its radius when
-it spawns, and this circle has to re-scale under `zoneRadius` while it is standing. Its veins are
-sampled in the plane and domain warped — the same lesson the bolt's ground burns taught, and for
-the same reason.
-
-The one thing worth stealing for the next far cast is the **snap**: the ring opens on
-`Easing.outCubic` multiplied by a bump that peaks late and dies at exactly 1, so it overshoots its
-radius and pulls back onto it, and the pillar climbs on the same clock 1.7× slower. The ground goes
-first, then the air breaks down over it.
-
-### The two crowns
-
-The Glacial Crown and the Pyre Crown are the same ability twice, and they are in the project on
-purpose: they are the clearest statement it makes about where an ability's identity actually lives.
-
-Both fill a footprint the same way — a ring of shards seated at `zoneRadius`, a skirt banked against
-its foot, and a **middle left empty**, because the read is a wall you are looking *into* and filling
-the disc stops it being a ring. Both erupt as a sweep that starts on the bearing the front arrived
-on and runs around both arms to close at the far side. Their settings blocks share slider names line
-for line, which is what makes them comparable: you can tune one against the other.
-
-Everything that tells them apart is material and timing.
-
-- **The shard.** `GlacierMaterial` is near-empty glass carried by its edges — a chromatically split
-  fresnel, light piped up the body, one real reflection of the stage off every facet.
-  `PyreMaterial` is its inverse: opaque, lit by nothing but its own combustion, and almost entirely
-  emissive. One domain-warped flame field, squashed along the blade's axis and scrolled so it
-  climbs, run through one four-stop heat ramp — and then pushed through a contrast curve (`sharp`),
-  which is the single control that turns a soft gradient into tongues with black voids between them.
-- **The arrival.** Ice punches through the floor: it overshoots its height and springs back, and
-  that damped bounce is most of what sells it as something *hard*. Fire does not do that, and a
-  flame that bounces onto its height reads as rubber — so the Pyre Crown's eruption is strictly
-  monotonic. There is no overshoot control in its settings block at all. `riseSnap` blends two
-  curves that both land exactly on 1 and neither of which crosses it, and `creep` then approaches a
-  little past full height from *below*, forever, which is what a flame does when it settles.
-- **The air inside.** The Glacial Crown's signature system is snow *falling* through the ring — the
-  only thing in the project that falls. The Pyre Crown's is the same idea reversed: an updraft, with
-  embers released at the floor and carried up the column over the crater, orbiting its middle as
-  they climb (`ParticleSystem`'s swirl mode, anchored on the centre).
-- **The departure.** The ice shatters — a per-fragment chunk id, half voronoi and half a hash of the
-  facet normal, taken away one plate at a time. The fire is **consumed**: the same combustion front
-  that lit the blade from the ground up runs backwards from the point down, with an ember rim riding
-  it and the body draining to ash behind it, sweeping back around the ring the way the bloom came.
-- **The room.** The Pyre Crown is the only live ability that writes to `LAYER.DISTORTION`. A fire
-  that does not bend the floor behind it reads as a decal on the lens, and no amount of extra flame
-  geometry fixes that.
-
-The crater is worth one more note. Its dark half is a `SCORCH` decal and its bright half is the
-ability-owned quad — split precisely because burnt ground has to *subtract* from the floor and the
-quad is additive. Trying to do both in one pass is how you end up with grey.
-
-### The third crown, which moves
-
-The Glacial and Pyre Crowns argue that an ability's identity lives in its material. The **Kraken
-Crown** (`abilities/KrakenAbility.js`) is the counter-argument: it lives in the *motion*.
-
-Both of those bloom once and then stand — nothing about either silhouette changes after the first
-half second, which is why they are tuned on a paused frame. This one is never the same on two
-consecutive frames. A slick of black water runs out to the aimed point, the flagstones give way, and
-a ring of cephalopod arms hauls itself out of the rift, rears back, and then **hammers the middle of
-the footprint** over and over — each landing throwing stone, spray and ink — until every arm rears
-together for one synchronised slam and they drag themselves back into the hole.
-
-- **The arm is bent in the vertex shader.** `createTentacleGeometry` bakes a tapered tube standing
-  straight up +Y and it is never drawn in that shape. `KrakenMaterial` integrates a curvature
-  profile — a lean, a curl and a travelling wave — up the arm, per vertex, per frame, and rebuilds
-  the local frame at every ring from the same integral. Coiling out of a hole, rearing, whipping
-  down and peeling back off the floor are that profile with four numbers moved. Nothing about the
-  animation touches the CPU, and one `InstancedMesh` per silhouette draws the whole ring.
-- **The arms actually hit the middle, and it is arithmetic rather than tuning.** A constant-curvature
-  arc of length `L` turning through `Θ` puts its tip `L(1−cosΘ)/Θ` along the bend and `L·sinΘ/Θ`
-  above the floor. At `Θ = π` that is `(2L/π, 0)` — on the ground. So an arm of length `πR/2` seated
-  on a footprint of radius `R` strikes its exact centre, and the ability derives every arm's length
-  from `zoneRadius` through that identity: drag the footprint slider *while they are hammering* and
-  they keep hitting the middle. The same closed form hands the CPU the impact point with no readback,
-  which is what every shockwave, crack, dust ring, chip of stone and sheet of water is placed with.
-  The strike is also the only pose that puts its turn in the linear term, because it is the only one
-  whose tip position has to be known.
-- **The beat is the content.** Each arm runs its own rear → whip → press → peel cycle, scattered
-  around the ring by `cycleScatter` so the slams arrive as rolling thunder, and the strike itself is
-  eased with a quartic — the arm barely moves for the first half of it and covers most of the arc in
-  the last few frames. Then `finaleLead` seconds before the end every arm abandons its own clock and
-  lands on the same frame. Scattering them all cast long is what buys that moment its weight.
-- **The skin is the only shaded material here that is not energy.** Everything else in the project is
-  emissive and forgiven by the bloom pass. This is lit by the room's own sun, has a wet specular coat
-  and one sample of the HDR probe, and carries three things nothing else does: chromatophore bands
-  travelling the length of the arm (real cephalopods do exactly this, and it is what says *alive*),
-  two staggered rows of suckers laid down the ventral face — which is why the baked `uv.x = 0` is
-  anchored on the side the arm curls toward — and bioluminescence spent almost entirely on the sucker
-  rims, because the inside of a curl is the side that faces you across the ring.
-- **The air inside hangs.** The Glacial Crown's snow falls, the Pyre Crown's embers race up. This
-  one's marine snow does neither: high drag and near-zero gravity, so the motes lose their launch
-  speed at once and simply sit there, turning slowly about the throat. It is what says the space
-  inside this ring is full of water.
-- **The rift turns.** Fire spreads and ice creeps; water rotates. `AbyssFieldMaterial` shears its
-  angular coordinate by the radius, which is the whole trick behind a spiral, and its curtain of
-  spray is the only veil in the project that is **not additive** — spray is matter, and half of what
-  makes the crown look deep is that the far arms are seen through a haze of it and the near ones are
-  not.
-
-Its rift splits the same way the Pyre Crown's crater does, and for the same reason: the dark half is
-a `SCORCH` decal in deep navy under an additive quad.
+All three are built out of the same parts and driven by the same single 0..1 envelope
+(`rampIn` → hold → `rampOut`). The Fresnel patch on the character's own materials (`FresnelAura.js`)
+is shared across all three, which is the only reason one buff can win against another for the
+claim to the rim — see `materials/FresnelAura.js` for the arbitration.
 
 ### Adding another ability
 
@@ -679,12 +717,12 @@ To make it a **gate cast**, the same trade: `cast: CastShape.GATE`, plus `gateWi
 `gateHeight` in its settings block. The threshold, the standing arch ghost and the reach ring come
 for free, and the ability reads its site as `pointAt(1)` and its facing as `direction`.
 
-To make it a **ring cast** or a **scribe cast**, `cast: CastShape.RING` or `CastShape.SCRIBE`, plus
-`ringRadius` and `ringHover`. Both hang a circle in the air and both measure it out of the same two
-fields; what differs is what the template promises. The ring template draws the sigil the hoop is
-forged on and tips the hoop up out of it, because a machine is not assembled in the pose it ends up
-in. The scribe template never touches the floor at all — it just stands the circle in the air where
-the thing will hang, and lets the reach ring carry the distance read.
+To make it a **ring cast**, `cast: CastShape.RING`, plus `ringRadius` and `ringHover` in its
+settings block. The sigil, the tipping ghost and the reach ring come for free.
+
+To make it a **scribe cast**, `cast: CastShape.SCRIBE`, plus `ringRadius` and `ringHover`. The
+circle hangs at `ringHover` off the floor; there is no footprint, so the reach ring carries the
+distance read alone.
 
 To make it **stay** once it has been cast, override `isPersistent`, give `impactDuration` an
 `Infinity` — which is exactly the statement "this cast does not end on its own" — and implement
@@ -703,40 +741,53 @@ data, and only the slots that changed are uploaded. Particles live in a ring buf
 the ability recycles slots instead of allocating. Silhouettes (soft, smoke, streak, leaf, chip,
 ring) are procedural — there are no sprite textures anywhere in the project.
 
-Frost Lance uses three systems: **mist** (non-additive, so the fog genuinely occludes and gives the
-field depth), **shards** (lit chips under gravity) and **glitter** (additive, negative gravity — the
-rising plume that is the signature of the reference frame).
+The Pyre Crown uses three systems: **embers** (additive, the rising plume that rides the updraft
+through the crown's middle), **veins** (a non-additive wall of flame on the boundary) and
+**cinders** (lit chips under gravity).
 
-Storm Lance uses four: **sparks** (velocity-stretched streaks under gravity), **motes** (the slow
-ionised drift around the bolt), **smoke** (non-additive haze off the scorched floor) and **debris**
-(lit chips). Its sparks are emitted from several points along the bolt each frame rather than one:
-a beam sheds along its whole length, and a single origin makes every batch read as a starburst.
+The Kraken Crown uses four: **spray** (a non-additive veil that lets the far arms be seen through
+it and the near ones not), **ink** (additive, low gravity, the water column's own colour),
+**marine snow** (the motes that hang in the throat) and **chips** (broken floor under the slams).
 
-Nova Beam uses four as well, and works one of them twice: its **motes** are the intake spiralling
-*into* the orb while it charges and the drift shed off the column once it is firing — the same glow,
-thrown the other way. Its **sparks** are thrown radially off the barrel and then dragged downrange
-by `sparkForward`, which is the read that says "pressure"; the bolt's fall instead, and that one
-difference does a lot of the work of keeping the two abilities apart.
+The Electrical Sphere uses three: **sparks** (velocity-stretched streaks shed from the corona),
+**motes** (slow ionised drift) and **debris** (lit chips off the platform on impact).
+
+The Earthen Spire uses two: **dust** (additive haze off the fracture wave) and **chips** (the
+plates that fall into the seams). The Earthen Spire is also the only ability that has the
+platform on the ground, and the dynamic light is the tower's own glow rather than an impact
+punch.
+
+The Verdant Gate and the Tidewrought Ring both lean on **motes** (the slow drift that hangs in
+the air after the structure is standing) and **mist** (a non-additive veil that the camera sees
+through), with the Tidewrought Ring adding **spray** for the inside of the rift and **dust** for
+the stand-up beat.
+
+The Fire Portal leans on a single **sparks** system — every visible particle in the ability is
+the same system, just emitted at different points and with different lifetimes. The fan that
+sweeps the room, the long arc-tangents that bend the line into a starburst, and the embers that
+hatch the contour as the spark runs round it are all the same pool.
 
 ### Render pipeline
 
 Per frame:
 
 1. **Depth prepass** — the opaque world into a half-res packed-depth buffer. Every VFX shader
-   samples it for soft intersections, so nothing cuts a hard line into the ground. The crystals sit
-   on `LAYER.WORLD`, so mist and glitter fade softly against them.
-2. **Distortion pass** — meshes on the distortion layer write screen-space UV offsets into a second
-   half-res buffer. Nothing writes to it in the current build; the pass is kept because it is the
-   hook a refraction effect would use.
+   samples it for soft intersections, so nothing cuts a hard line into the ground. The
+   crystals, plates, blocks, arms and tower sit on `LAYER.WORLD`, so mist and embers fade softly
+   against them.
+2. **Distortion pass** — meshes on the distortion layer write screen-space UV offsets into a
+   second half-res buffer. The Pyre Crown's heat haze is the only thing that writes to it; the
+   pass is kept because it is the hook a refraction effect would use.
 3. **Composer** — scene → refraction warp → bloom → tone map (ACES) → grade.
 
 The grade pass folds chromatic aberration, lift/gain/contrast/saturation/temperature, vignette,
 film grain and the impact flash into one resample.
 
-Shadows come from a single directional light whose orthographic shadow camera is re-centred on the
-character each frame and fitted to a 52 m box at 4096² (~1.3 cm/texel). The `three/addons` CSM
-module was tried first and removed: it replaces three's `lights_fragment_begin` chunk *globally*,
-so any material not explicitly registered with it silently loses all directional lighting.
+Shadows come from a single directional light whose orthographic shadow camera is re-centred on
+the character each frame and fitted to a 52 m box at 4096² (~1.3 cm/texel). The `three/addons`
+CSM module was tried first and removed: it replaces three's `lights_fragment_begin` chunk
+*globally*, so any material not explicitly registered with it silently loses all directional
+lighting.
 
 Contact shadows are a real render: the character's depth is captured from below into a 256²
 target, blurred twice and projected onto the ground.
@@ -745,93 +796,128 @@ target, blurred twice and projected onto the ground.
 
 ## Editor and presets
 
-Press **G** for the panel. Folders: Presets, Global, Aim indicator, Far-cast circle, Frost Lance,
-Storm Lance, Cinder Fall, Nova Beam, Voltaic Snare, Environment, Post processing, Camera,
-Character. Every folder starts collapsed — there are enough controls here that one open section
-pushes the rest off the screen.
+Press **G** for the panel. Folders, in order: Presets, Global, Aim indicator, Far-cast circle,
+Gate template, Ring template, Scribe template, Pyre Crown, Kraken Crown, Electrical Sphere,
+Earthen Spire, Verdant Gate, Tidewrought Ring, Fire Portal, Electric Boost, Magic Boost, Fire
+Boost, Environment, Post processing, Camera, Character. Every folder starts collapsed — there
+are enough controls here that one open section pushes the rest off the screen.
 
 - **Global** multipliers scale everything at once (speed, glow, noise, particles, lights, impact
   intensity, camera shake, time scale…).
-- **Aim indicator** — the arrow's silhouette in metres, its outline and fill, the chevrons and
-  frost, and the rings and rosette.
-- **Far-cast circle** (40 controls) — the boundary band, the interior, the ticks, sweep and
+- **Aim indicator** (33 controls) — the arrow's silhouette in metres, its outline and fill, the
+  chevrons and frost, and the rings and rosette.
+- **Far-cast circle** (41 controls) — the boundary band, the interior, the ticks, sweep and
   reticle, the reach ring, and the snap-out. Shared by every far cast, so it is filed with the
   targeting rather than with any one ability.
-- **Frost Lance** (113 controls, 25 of them colours) — the cast, the footprint, the silhouette,
-  the crystal itself, the eruption timing, the ice material, the frost on the ground,
-  mist/chips/glitter, the impact and the dynamic light.
-- **Storm Lance** (123 controls, 34 of them colours) — the cast, where the bolt leaves the hand,
-  the bundle, one filament, the ribbon, flicker and restrike, the bolt's colour, the burns on the
-  ground, sparks/motes/smoke/debris, the muzzle and impact, and the dynamic light.
-- **Nova Beam** (176 controls) — the cast, where it leaves the hands, the column, the core/sheath/
-  halo stack, the surface and its flow, the beam's colour, the coils, the shock discs, the charge
-  and its intake, what the floor does, sparks/motes/steam/debris, release/impact/burn, and the two
-  dynamic lights.
-- **Voltaic Snare** (174 controls, 33 of them colours) — the cast and its footprint, the leash, the
-  column, the tendrils, the rim arcs, the shared filament shape and flicker, the ribbon and its
-  colour, the field on the floor, the burns, sparks/updraft/smoke/debris, throw/snap/hold, and the
-  dynamic light.
+- **Gate template** (34 controls) — the threshold, the standing arch ghost, the reach ring, and
+  the rendering. Shared by the gate cast.
+- **Ring template** (43 controls) — the contour, the sigil, the tipping ghost, the reach ring.
+  Shared by the ring cast.
+- **Scribe template** (23 controls) — the circle, the reach ring. Shared by the scribe cast.
+- **Pyre Crown** (222 controls, 36 of them colours) — the cast, where the fire leaves the hand,
+  filling the footprint, the silhouette, the blade, the eruption, burning fire, the combustion
+  front and burn-down, the crater, the wall of flame, heat haze, scorch and fractures, smoke,
+  embers and the updraft, cinders, bloom and blaze, and the dynamic light.
+- **Kraken Crown** (244 controls) — the cast, where the wave leaves the caster, filling the
+  ring, the arm, the poses, the travelling wave, the beat, the flesh, chromatophores and
+  biolume, the suckers, coming out of the rift, the smash, the rift, the curtain of spray, wet
+  stone and fractures, ink, spray and marine snow, broken floor, the tear and the standing
+  crown, and the dynamic light.
+- **Electrical Sphere** (206 controls) — the cast, where it leaves the hand, the sphere, the
+  reflective shell, charge under the skin, hex panelling (off by default), surface discharge,
+  Fresnel light, the ground platform, radial corona, per-arc shape, the corona ribbon, the
+  pulse, sphere colours, corona colours, platform colours, ground burns, sparks and motes,
+  sphere-shed particles, muzzle and impact, and the dynamic light.
+- **Earthen Spire** (75 controls) — the cast, where the wave leaves the caster, the travelling
+  wave, the plates, travelling boulders, the tower, the rock, the tower glass body, outline
+  glow, dust and debris, and the impact.
+- **Verdant Gate** (77 controls) — the cast, where the seam leaves the caster, the opening, the
+  stones, the construction, the portal, colour, motes, mist and dust, and light and impact.
+- **Tidewrought Ring** (96 controls) — the cast, where the tide leaves the caster, the ring, the
+  segments, the forging, standing up, the rift, the runes, coming apart, colour, motes, spray
+  and mist, and light and impact.
+- **Fire Portal** (58 controls) — the cast, the circle, struck — the spark that draws it, the
+  ring, the middle, the sparks, spark colour over its life, and the light.
+- **Electric Boost** (172 controls) — the buff, Fresnel on the character, veins and sweep, the
+  arcs, the body they are struck on, the shape of one arc, the ribbon, sparks and motes, the
+  crater under the feet, rings around the crater, uprights across the circle, the coil ribbon,
+  burns under the feet, dynamic light, and charge and release.
+- **Magic Boost** (148 controls) — the buff, Fresnel on the character, veins and sweep, the
+  ribbons, how far a ribbon wanders, the sheet, the smoke on the floor, smoke and motes, rings
+  under the feet, dynamic light, and open and close.
+- **Fire Boost** (208 controls) — the buff, Fresnel mask on the character, veins and sweep, the
+  skeleton the fire is rooted on, the tongues, the sheet a tongue is drawn on, the orbs, how an
+  orb burns, the trails, the burn on the floor, embers and smoke, scorches under the feet,
+  dynamic light, and catch and burn out.
 - **Presets** save to `localStorage`, and can be duplicated, deleted, exported to JSON, imported
   from JSON, or reset to the shipped defaults.
 
-Every ability exposes **every** colour it draws with, and none is derived from another: the crystal
-palette, the bolt palette, the beam's four layers and its coils and discs, the ground marks, the
-impact shells, the shockwave rings, the screen flashes, and a four-stop lifetime gradient
-(`birth → early → late → death`) for each particle system. Tinting the fog without touching the ice,
-or cooling the sparks to orange while the filaments stay blue, is a picker away.
+Every ability exposes **every** colour it draws with, and none is derived from another: the blade
+palette, the arm palette, the sphere's four layers, the portal's surface, the rift's pool, the
+ground marks, the impact shells, the shockwave rings, the screen flashes, and a four-stop lifetime
+gradient (`birth → early → late → death`) for each particle system. Tinting the wall of flame
+without touching the blades, or cooling the sparks to orange while the corona stays blue, is a
+picker away.
 
 Presets are plain snapshots of the settings tree, so an exported file is readable and editable by
 hand.
 
 Knobs worth knowing about, because they reshape their ability the most:
 
-- `ice.heightCurve` — how late the ramp climbs; raise it and the field stays low until it explodes
-  at the target. `ice.frontBias` below 1 crowds the crystals toward the impact point.
-- `thunder.jitter` and `thunder.jitterScale` — how violently the bolt kinks, and how often.
-  `thunder.strands` and `thunder.spread` set how wide the bundle reads, and `thunder.restrike`
-  how hard it strobes. Those five carry the character of the effect.
-- `beam.radius` and `beam.flare` — how heavy the column reads and how hard it opens out where it
-  lands. `beam.charge` and `beam.lifetime` are the wind-up and the hold, which are what make this
-  ability feel unlike the other three, and `beam.coreWidth` / `beam.coreFill` decide whether the
-  layers stay separable or blow out to white.
-- `snare.zoneRadius` — the one number the whole far cast is built on. It resizes the targeting
-  circle, the tendrils, the rim arcs, the burnt field and the pillar's throat together, live.
-  After that, `snare.snapTime` and `snare.height` carry the moment it opens, and `snare.tendrils` /
-  `snare.rimArcs` / `snare.strands` decide how much of that footprint is actually lit.
-- `zone.boundary` and `zone.snap` — how thick the far-cast circle's edge reads, and how hard it
-  overshoots on the way out. Between them they decide whether the indicator feels like a UI overlay
-  or like something the caster is doing.
+- `pyre.heightCurve` and `pyre.frontBias` — how late the ramp climbs, and how crowded the
+  blades are toward the impact point. `pyre.riseSnap` and `pyre.creep` decide whether the
+  eruption reads as something hot settling (current default) or as something bouncing onto
+  height.
+- `kraken.zoneRadius` and `kraken.arms` — the footprint, and the count of heavy arms on the
+  boundary. The arms' length is *derived* from the radius through the closed form for a
+  constant-curvature arc, so the slam point is arithmetic, not tuned. `kraken.cycleScatter`
+  carries the rolling-thunder character; `kraken.finaleLead` carries the synchronized slam.
+- `electrical.radius` and `electrical.arcs` — how heavy the sphere reads, and how busy the
+  corona is. `electrical.pulseFrequency` and `electrical.pulseStrength` are the heartbeat; they
+  run on a smooth envelope that drives both the materials' `uPulse` uniform and the particle
+  rates, so the whole effect breathes together.
+- `earth.towerHeight` and `earth.crustWidth` — the height of the standing tower, and the
+  width of the plate band the travelling front leaves behind it. `earth.crackDelay` is the gap
+  between the head and the fracture wave, and the tower's glow comes from `earth.glow` on the
+  glass body inside the procedural cylinder.
+- `portal.span` and `portal.keystoneHang` — how wide the arch is, and how long the keystone
+  hangs before it seats. The opening itself is one SDF on a quad, so the aperture can flood
+  open and the span can be dragged without anything being rebuilt.
+- `aether.ringRadius` and `aether.standUpOver` — the size of the hoop, and how long it takes
+  to hinge from the floor to standing. The spin is analytic, so re-posing on a paused frame
+  costs nothing.
+- `firePortal.ringRadius` and `firePortal.scribeTime` — the size of the hole, and how long the
+  spark takes to run round. `firePortal.ringInner` is the one slider that can ruin it: past a
+  couple of centimetres the bloom licks back over the hole and the middle lights up.
+- `zone.boundary` and `zone.snap` — how thick the far-cast circle's edge reads, and how hard
+  it overshoots on the way out. Between them they decide whether the indicator feels like a UI
+  overlay or like something the caster is doing.
 
 ---
 
 ## Performance notes
 
-- Abilities, decals, bursts and particles are pooled, per type. Twelve casts in a row build at most
-  **four** instances of an ability and then stop allocating.
-- The whole crystal field is three draw calls regardless of crystal count; the cap is 288.
-- A whole bolt is **two** draw calls regardless of filament count; the cap is 24 filaments at 72
-  samples each. Nothing about the path touches the CPU, so `strands` is nearly free.
-- A whole snare — leash, pillar, tendrils and rim arcs — is **two** draw calls plus one for the
-  field, regardless of how many filaments are in it; the cap is 56 across the four roles. As with
-  the bolt, none of the shape touches the CPU, so raising `tendrils` or `rimArcs` is nearly free.
-  Its targeting circle is two more: one quad and one ring strip.
-- A whole beam is **six** draw calls regardless of how many coils and discs are on it — three tube
-  passes over one shared geometry, plus one instanced draw each for the coils, the discs and the
-  charge orb. As with the bolt, none of the shape touches the CPU, so `coils` and `rings` are
-  nearly free. It takes two of the six dynamic lights (the column and the caster's hands), so four
-  concurrent beams would exhaust the pool; `LightPool.acquire()` returns null and every use of the
-  handle is guarded.
-- The six dynamic point lights are created at boot and parked at zero intensity rather than added
-  and removed — changing the light count forces three to recompile every material.
+- Abilities, decals, bursts and particles are pooled, per type. Twelve casts in a row build at
+  most **four** instances of an ability and then stop allocating.
+- The whole blade field is three draw calls regardless of blade count; the cap is 320 across the
+  three silhouettes.
+- A whole kraken cage is two draw calls regardless of arm count, plus one for the rift; the cap
+  is 26 arms plus whips, and none of the pose touches the CPU, so the strike cycle is free.
+- A whole electrical sphere is three draw calls — the body, the platform, the corona — plus one
+  instanced ribbon strip shared with the rest of the project. `electrical.arcs` is the count of
+  arcs in the corona, and the whole effect is one mesh per surface.
+- The gate is one instanced mesh of `createBlockGeometry` plus the portal quad and its halo;
+  the ring is the same arrangement with the ring's own block seed.
+- The six dynamic point lights are created at boot and parked at zero intensity rather than
+  added and removed — changing the light count forces three to recompile every material.
 - Shadow maps update exactly once per frame even though the scene is rendered several times.
 - `renderer.compileAsync()` runs during boot so the first cast never stutters on shader compile.
 - Pixel ratio is capped at 1.75; the depth and distortion buffers are half resolution.
 
-Measured on a default cast: 32 draw calls idle, ~69 with a full ice field standing and ~49 with a
-bolt in the air, ~1150 live particles. A snare standing with its cage, field and rim burns is ~45
-draw calls and ~480 live particles, and arming its circle costs two. Four concurrent casts —
-the pool's ceiling, whichever slots they came from — peaks at ~186 draw calls and five of the six
-dynamic lights.
+Measured on a default cast: 32 draw calls idle, ~110 with a full pyre standing, ~95 with a kraken
+mid-strike, and ~70 with an electrical sphere hovering. Four concurrent casts — the pool's
+ceiling, whichever slots they came from — peak at ~220 draw calls and five of the six dynamic
+lights.
 
 Live counters (FPS, live particles, instances, draw calls) are in the top-right of the HUD.
 
@@ -840,36 +926,41 @@ Live counters (FPS, live particles, instances, draw calls) are in the top-right 
 ## The archive
 
 `src/archive/` holds the previous incarnation of this project: a four-element bending sandbox
-(fire, water, earth, air) cast along a freehand-drawn spline, plus a walk mode that let the avatar
-ride the same stroke. None of it is imported by the live app, so Vite never bundles it.
+(fire, water, earth, air) cast along a freehand-drawn spline, plus a walk mode that let the
+avatar ride the same stroke. None of it is imported by the live app, so Vite never bundles it.
 
-It was retired because this build replaced path drawing with a linear skillshot, which removed the
-input every one of those systems was built on. The raymarched flame and water surfaces in
-particular are worth mining. See `src/archive/README.md` for what is in there and how to restore a
-piece of it.
+It was retired because this build replaced path drawing with a linear skillshot, which removed
+the input every one of those systems was built on. The raymarched flame and water surfaces in
+particular are worth mining. See `src/archive/README.md` for what is in there and how to restore
+a piece of it.
 
 ---
 
 ## Known rough edges
 
-- Crystals are drawn with `transparent: true` and `depthWrite: true`. That is the right trade for
-  near-opaque ice and it keeps the field from sorting through itself, but at low `ice.opacity` the
-  sorting artefacts between overlapping spikes become visible.
-- The eruption front is a straight line on a flat floor. Both assumptions are baked in — the ground
-  is a single plane at y = 0, and the aim raycast targets that plane.
-- The distortion pass runs with nothing writing to it. It costs a half-res clear per frame.
-- The impact cluster is placed radially around the end point, so at very short cast distances it
-  can overlap the band behind it more than it should.
-- The far cast inherits the flat-floor assumption twice over: the circle is drawn on a single quad
-  at `y = 0`, and the snare's tendrils and rim arcs are placed against that same plane. Neither
-  would drape over a step.
-- Both the targeting circle and the snare's field are additive, so the footprint brightens the
-  floor rather than shading it. On a pale floor the boundary would need a non-additive pass under
-  it to stay readable.
+- Blades, plates, blocks, arms and the tower are drawn with `transparent: true` and
+  `depthWrite: true`. That is the right trade for near-opaque stone and it keeps the field
+  from sorting through itself, but at low `*.opacity` the sorting artefacts between overlapping
+  pieces become visible.
+- The travelling front is a straight line on a flat floor. Both assumptions are baked in — the
+  ground is a single plane at y = 0, and the aim raycast targets that plane.
+- The far cast inherits the flat-floor assumption twice over: the circle is drawn on a single
+  quad at `y = 0`, and the pyre's scorch and the kraken's rift are placed against that same
+  plane. Neither would drape over a step.
+- Both the targeting circle and the pyre's wall of flame are additive, so the footprint
+  brightens the floor rather than shading it. On a pale floor the boundary would need a
+  non-additive pass under it to stay readable.
+- The electrical sphere's glass body is opaque, so a sphere dropped behind a standing gate will
+  not see the gate through the body. The fix is a transparency pass on the body, but that
+  breaks the depth read against the platform; the trade as it stands is that the sphere always
+  reads as solid.
+- The Earthen Spire's tower builds in courses that are spaced uniformly; at very low
+  `towerHeight` the lowest course compresses against the floor, which can let the ground
+  light leak between segments.
 
 ---
 
 ## Licence
 
-Code is provided as-is for the purposes of this project. The bundled HDR probe and the character
-FBX retain their original licences.
+Code is provided as-is for the purposes of this project. The bundled HDR probe, the character
+FBX, and the cathedral texture set retain their original licences.
